@@ -22,6 +22,7 @@ function RetrieveVendorComponents()
 	Wallet = exports["mythic-base"]:FetchComponent("Wallet")
 	Inventory = exports["mythic-base"]:FetchComponent("Inventory")
 	Execute = exports["mythic-base"]:FetchComponent("Execute")
+	Version = exports["mythic-base"]:FetchComponent("Version")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -35,6 +36,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Wallet",
 		"Inventory",
 		"Execute",
+		"Version",
 	}, function(error)
 		if #error > 0 then
 			return
@@ -182,6 +184,8 @@ AddEventHandler("Core:Shared:Ready", function()
 				cb({})
 			end
 		end)
+
+		Version:Check('Mythic-Framework/Mythic-VersionCheckers', GetCurrentResourceName())
 	end)
 end)
 
